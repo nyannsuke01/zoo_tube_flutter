@@ -13,35 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          leading: Icon(Icons.menu),
-          title: const Text('AppBar'),
-          backgroundColor: Colors.orange,
-          centerTitle: true,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.face,
-                color: Colors.white,
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(
-                Icons.email,
-                color: Colors.white,
-              ),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.white,
-              ),
-              onPressed: () {},
-            ),
-          ],
-        ),
         body: Navigation(),
       ),
     );
