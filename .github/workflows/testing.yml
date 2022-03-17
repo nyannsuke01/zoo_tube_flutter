@@ -23,6 +23,4 @@ jobs:
         channel: 'stable'
         cache: true
     - run: flutter pub get
-    - name: Copy cognito secrets
-      run: echo -n ${{ secrets.COGNITO_SECRETS }} | base64 -d > lib/common/cognito_secret.dart
     - run: flutter test 
