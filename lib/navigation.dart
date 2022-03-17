@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:zoo_tube_flutter/ui/pages/my_page.dart';
+import 'package:zoo_tube_flutter/ui/pages/home_page.dart';
+import 'package:zoo_tube_flutter/ui/pages/favorite_page.dart';
 
-import 'pages/home_page.dart';
-import 'pages/favorite_page.dart';
-import 'pages/my_page.dart';
 
 class Navigation extends StatefulWidget {
   @override
