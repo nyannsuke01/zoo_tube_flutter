@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
           ],
           bottom: const TabBar(
             tabs: <Widget>[
-              Tab(text: "Cat"),
+              Tab(text: "Test"),
               Tab(text: "Dog"),
               Tab(text: "Rabbit")
             ],
