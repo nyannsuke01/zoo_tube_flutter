@@ -6,6 +6,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var _aniaml_list = ["Cat","Dog","Rabbit"];
     return DefaultTabController(
       initialIndex: 1,
       length: 3,
