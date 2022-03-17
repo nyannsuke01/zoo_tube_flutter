@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'home_screen.dart';
-import 'favorite.dart';
-import 'mypage.dart';
+import 'pages/home_page.dart';
+import 'pages/favorite_page.dart';
+import 'pages/my_page.dart';
 
 class Navigation extends StatefulWidget {
   @override
@@ -12,8 +12,8 @@ class Navigation extends StatefulWidget {
 class _NavState extends State<Navigation> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    Favorite(),
+    HomePage(),
+    FavoritePage(),
     Mypage(),
   ];
 
