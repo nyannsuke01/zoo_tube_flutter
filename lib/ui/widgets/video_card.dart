@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../entity/data.dart';
 import 'package:miniplayer/miniplayer.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../navigation.dart';
 
-
-class VideoCard extends StatelessWidget {
+class VideoCard extends ConsumerWidget {
   final Video video;
   final bool hasPadding;
   final VoidCallback? onTap;
@@ -19,12 +19,14 @@ class VideoCard extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
-        context.read(selectedVideoProvider).state = video;
-        context
-            .read(miniPlayerControllerProvider)
+        ref.read(selectedVideoProvider.state).state = video;
+        print("selectedVideoProvider");
+
+        print(selectedVideoProvider);
+        ref.read(miniPlayerControllerProvider.state)
             .state
             .animateToHeight(state: PanelState.MAX);
         if (onTap != null) onTap!();

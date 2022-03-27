@@ -6,12 +6,12 @@ import '../../navigation.dart';
 import '../widgets/video_card.dart';
 import '../widgets/video_info.dart';
 
-class VideoScreen extends StatefulWidget {
+class VideoScreen extends ConsumerStatefulWidget {
   @override
   _VideoScreenState createState() => _VideoScreenState();
 }
 
-class _VideoScreenState extends State<VideoScreen> {
+class _VideoScreenState extends ConsumerState<VideoScreen> {
   ScrollController? _scrollController;
 
   @override
@@ -29,9 +29,7 @@ class _VideoScreenState extends State<VideoScreen> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context
-          .read(miniPlayerControllerProvider)
-          .state
+      onTap: () => ref.read(miniPlayerControllerProvider)
           .animateToHeight(state: PanelState.MAX),
       child: Scaffold(
         body: Container(
@@ -42,8 +40,8 @@ class _VideoScreenState extends State<VideoScreen> {
             slivers: [
               SliverToBoxAdapter(
                 child: Consumer(
-                  builder: (context, watch, _) {
-                    final selectedVideo = watch(selectedVideoProvider).state;
+                  builder: (context, WidgetRef ref, _) {
+                    final selectedVideo = ref.watch(selectedVideoProvider);
                     return SafeArea(
                       child: Column(
                         children: [
@@ -58,9 +56,8 @@ class _VideoScreenState extends State<VideoScreen> {
                               IconButton(
                                 iconSize: 30.0,
                                 icon: const Icon(Icons.keyboard_arrow_down),
-                                onPressed: () => context
-                                    .read(miniPlayerControllerProvider)
-                                    .state
+                                onPressed: () =>
+                                    ref.read(miniPlayerControllerProvider)
                                     .animateToHeight(state: PanelState.MIN),
                               ),
                             ],

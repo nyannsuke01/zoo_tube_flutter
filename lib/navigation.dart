@@ -34,10 +34,10 @@ class _NavScreenState extends State<Navigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Consumer(
-        builder: (context, watch, _) {
-          final selectedVideo = watch(selectedVideoProvider).state;
+        builder: (context, WidgetRef ref, _) {
+          final selectedVideo = ref.watch(selectedVideoProvider.state).state;
           final miniPlayerController =
-              watch(miniPlayerControllerProvider).state;
+              ref.watch(miniPlayerControllerProvider.state).state;
           return Stack(
             children: _screens
                 .asMap()
@@ -121,9 +121,7 @@ class _NavScreenState extends State<Navigation> {
                                   IconButton(
                                     icon: const Icon(Icons.close),
                                     onPressed: () {
-                                      context
-                                          .read(selectedVideoProvider)
-                                          .state = null;
+                                      ref.read(selectedVideoProvider);
                                     },
                                   ),
                                 ],
