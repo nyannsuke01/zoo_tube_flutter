@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../entity/data.dart';
+import '../../main.dart';
 import '../widgets/custom_sliver_app_bar.dart';
 import '../widgets/video_card.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    getASync();
     return Scaffold(
       body: CustomScrollView(
         slivers: [

@@ -2,9 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'navigation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future <void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(ProviderScope(child: MyApp()));
+}
+void getASync() async {
+  var result = await FirebaseFirestore.instance.collection('memo').get();
+  result.docs.forEach((doc) {
+    print("***debug--");
+    print(doc.id);
+    print(doc['title']);
+  });
 }
 
 class MyApp extends StatelessWidget {
