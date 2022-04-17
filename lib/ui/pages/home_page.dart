@@ -1,65 +1,38 @@
 import 'package:flutter/material.dart';
-import '../widgets/list_wigget.dart';
+import '../../entity/data.dart';
+import '../../main.dart';
+import '../widgets/Page1.dart';
+import '../widgets/Page2.dart';
+import '../widgets/Page3.dart';
+import '../widgets/Page4.dart';
+import '../widgets/animal_kinds_tab_bar.dart';
+import '../widgets/custom_sliver_app_bar.dart';
+import '../widgets/video_card.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    var _aniaml_list = ["Cat","Dog","Rabbit"];
-    return DefaultTabController(
-      initialIndex: 1,
-      length: 3,
-      child: Scaffold(
-        body: DefaultTabController(
-          length: 3,
-          child: NestedScrollView(
-            headerSliverBuilder: (
-                BuildContext context,
-                bool innerBoxIsScrolled,
-                ) {
-              return <Widget>[
-                SliverOverlapAbsorber(
-                  handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
-                    context,
-                  ),
-                  sliver: SliverAppBar(
-                    leading: Icon(Icons.menu),
-                    title: const Text('ZooTube'),
-                    backgroundColor: Colors.orange,
-                    centerTitle: true,
-                    actions: <Widget>[
-                      IconButton(
-                        icon: Icon(
-                          Icons.settings,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {},
-                      ),
-                      IconButton(
-                        icon: Icon(
-                          Icons.favorite,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {},
-                      ),
-                    ],
-                    bottom: const TabBar(
-                      tabs: <Widget>[
-                        Tab(text: "Cat1"),
-                        Tab(text: "Dog"),
-                        Tab(text: "Rabbit")
-                      ],
-                    ),
-                  ),
-                ),
-              ];
-            },
-            body: TabBarView(
-              children: <Widget>[ListWidget('Cat'), ListWidget('Dog'), ListWidget('Rabbit')],
+    getASync();
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          CustomSliverAppBar(),
+          new SliverFillRemaining(
+              child: AnimalKindsTabBar("ねこ", Page1())
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.only(bottom: 60.0),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                  final video = videos[index];
+                  return VideoCard(video: video);
+                },
+                childCount: videos.length,
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

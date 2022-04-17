@@ -24,7 +24,7 @@ class ListWidget extends StatelessWidget {
               SliverPadding(
                 padding: const EdgeInsets.all(8.0),
                 sliver: SliverFixedExtentList(
-                  itemExtent: 48.0,
+                  itemExtent: 70.0,
                   delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                       return ListTile(
